@@ -139,7 +139,7 @@ var game = {
 
         $('body').html('<div class="main-wrapper"><div class="sub-wrapper text-center" id="subwrapper"></div></div>');
 
-        $('.sub-wrapper').append('<img src="assets/img/incorrect-face.svg" class="face">').append('<h2 class="end-text">"All Done!"</h2>')
+        $('.sub-wrapper').append('<img src="assets/img/correct-face.svg" class="face">').append('<h2 class="end-text">"All Done!"</h2>')
             .append('<br><h4>Correct: ' + game.totalCorrectAnswers + '</h4>').append('<h4>Incorrect: ' + game.totalIncorrectAnswers + '</h4>').append('<h4>Unanswered: ' + game.totalUnansweredQuestions + '</h4>').append('<a class="btn btn-outline-light start-button" role="button" id="reset"><img src="assets/img/arrow-reload.svg" class="icons"></a>');
     },
 
