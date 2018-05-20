@@ -50,6 +50,9 @@ body {
     font-size: 13px;
     color: #2A2A2A;
     white-space: normal;
+    -webkit-box-shadow:  1px 1px rgba(17, 52, 92, 0.29);
+    -moz-box-shadow:  1px 1px rgba(17, 52, 92, 0.29);
+    box-shadow:  1px 1px rgba(17, 52, 92, 0.29);
 }
 
 h2{
