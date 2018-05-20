@@ -86,7 +86,7 @@ var game = {
 
         game.totalIncorrectAnswers++;
         $('body').html('<div class="main-wrapper"><div class="sub-wrapper text-center" id="subwrapper"></div></div>');
-        $('.sub-wrapper').append('<img src="assets/img/incorrect-face.svg" class="face">').append('<div class="container"><h2 class="result-text">The correct answer is <span class="result-text-black"> " ' + questionsList[game.currentQuestion].correctAnswer + ' "</span></h2></div>');
+        $('.sub-wrapper').append('<img src="assets/img/incorrect-face.svg" class="face">').append('<div class="container"><h2 class="result-text">The correct answer is <span class="black-text"> " ' + questionsList[game.currentQuestion].correctAnswer + ' "</span></h2></div>');
 
         if (game.currentQuestion == questionsList.length - 1) {
 
@@ -139,8 +139,8 @@ var game = {
 
         $('body').html('<div class="main-wrapper"><div class="sub-wrapper text-center" id="subwrapper"></div></div>');
 
-        $('.sub-wrapper').append('<img src="assets/img/correct-face.svg" class="face">').append('<h2 class="end-text">"All Done!"</h2>')
-            .append('<br><h4>Correct: ' + game.totalCorrectAnswers + '</h4>').append('<h4>Incorrect: ' + game.totalIncorrectAnswers + '</h4>').append('<h4>Unanswered: ' + game.totalUnansweredQuestions + '</h4>').append('<a class="btn btn-outline-light start-button" role="button" id="reset"><img src="assets/img/arrow-reload.svg" class="icons"></a>');
+        $('.sub-wrapper').append('<img src="assets/img/correct-face.svg" class="face">').append('<h2 class="ending">"All Done!"</h2>')
+            .append('<br><h4>Correct: ' + game.totalCorrectAnswers + '</h4>').append('<h4>Incorrect: ' + game.totalIncorrectAnswers + '</h4>').append('<h4>Unanswered: ' + game.totalUnansweredQuestions + '</h4>').append('<a class="btn btn-outline-light reset-button" role="button" id="reset"><img src="assets/img/arrow-reload.svg" class="icons"></a>');
     },
 
     // RESET THE GAME FROM SCRATCH AND START LOADING THE QUESTIONS ALL OVER AGAIN

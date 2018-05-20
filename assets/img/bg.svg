@@ -1,0 +1,41 @@
+
+<svg width="1920px" height="1280px" viewBox="0 0 1920 1280" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="3.061617e-15%" id="linearGradient-1">
+            <stop stop-color="#88E5E6" offset="0%"></stop>
+            <stop stop-color="#42D8DD" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-9">
+            <g id="Group-7">
+                <g id="Group" fill="url(#linearGradient-1)">
+                    <rect id="Rectangle" x="0" y="0" width="1920" height="1280"></rect>
+                </g>
+                <g id="Group-6" transform="translate(0.000000, 950.000000)">
+                    <g id="Group-3" transform="translate(0.000000, 1.000000)">
+                        <polygon id="Triangle" fill="#D8D8D8" points="406.131208 75.0659537 812.262416 328.413547 0 328.413547"></polygon>
+                        <polygon id="Triangle" fill="#737D96" points="1513.86879 75.0659537 1920 328.413547 1107.73758 328.413547"></polygon>
+                        <path d="M1512.75887,75.0659537 L1397.4277,328.413547 L1107.73758,328.413547 L1512.75887,75.0659537 Z" id="Combined-Shape" fill="#36475B"></path>
+                        <polygon id="Triangle" fill="#737D96" points="965.297364 1.17290553 1490.32495 328.688925 440.269773 328.688925"></polygon>
+                        <polygon id="Combined-Shape" fill="#737D96" points="406.131208 75.0659537 812.262416 328.413547 0 328.413547"></polygon>
+                        <path d="M406.198476,75.0659537 L290.867303,328.413547 L1.17719191,328.413547 L406.198476,75.0659537 Z" id="Combined-Shape" fill="#36475B"></path>
+                        <path d="M965.297364,0 L815.793991,328.413547 L440.269773,328.413547 L965.297364,0 Z" id="Combined-Shape" fill="#36475B"></path>
+                    </g>
+                    <polygon id="Path-2" fill="#CDCDCD" points="408 74 322 128 363 132 370 157"></polygon>
+                    <polygon id="Path-2" fill="#E8E8E8" transform="translate(429.500000, 116.000000) scale(-1, 1) translate(-429.500000, -116.000000) " points="453 75 369 128 409 132 416 157 453 136 490 157"></polygon>
+                    <g id="Group-5" transform="translate(843.000000, 0.000000)">
+                        <polygon id="Path-2" fill="#CDCDCD" points="122 0 0 77 80 56 85 83"></polygon>
+                        <polygon id="Path-2" fill="#E8E8E8" transform="translate(163.000000, 41.500000) scale(-1, 1) translate(-163.000000, -41.500000) " points="205 1 85 76 159 56 166 81 203 60 241 82"></polygon>
+                    </g>
+                </g>
+            </g>
+            <g id="Group-8" transform="translate(1429.000000, 1024.000000)">
+                <polygon id="Path-2" fill="#CDCDCD" points="86 0 0 54 41 58 48 83"></polygon>
+                <polygon id="Path-2" fill="#E8E8E8" transform="translate(109.000000, 42.000000) scale(-1, 1) translate(-109.000000, -42.000000) " points="134 1 47 55 90 58 97 83 134 62 171 83"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

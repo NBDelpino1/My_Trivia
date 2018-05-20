@@ -69,13 +69,13 @@ h2.result-text {
     margin-top:15px;
     margin-bottom:200px;
 }
-h2.end-text {
+h2.ending {
     font-family: 'Anton', sans-serif;
     color: #fff;
     margin-bottom:5px;
     margin-top:5px;
 }
-.result-text-black {
+.black-text {
     color: #2A2A2A;
 }
 #logo {
