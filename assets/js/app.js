@@ -1,161 +1,4 @@
-var game = {
-
-    questions: questionsList,
-    currentQuestion: 0,
-    clock: 30,
-    totalCorrectAnswers: 0,
-    totalIncorrectAnswers: 0,
-    totalUnansweredQuestions: 0,
-
-
-    loadQuestion: function() {
-
-        game.clock = 30;
-        timer = setInterval(game.countdown, 1000);
-        $('body').html('<div class="main-wrapper"><ul class="nav justify-content-center"><li class="nav-item"><a class="nav-link disabled timer" href="#"><span id="clock">30</span><span></span></a></li></ul><div class="sub-wrapper text-center" id="subwrapper"><div class="container text-center questions-container"><div class="row text-center answers-container"></div></div></div></div>');
-        $('.questions-container').prepend('<h2 class="question-text">' + questionsList[game.currentQuestion].question + '</h2>');
-
-        // LOOP THROUGH QUESTIONS, MAKE BUTTONS AND APPEND TEXT
-        for (var i = 0; i < questionsList[game.currentQuestion].answers.length; i++) {
-
-
-            $('.answers-container').append(
-                '<div class="col-sm"><button class="btn btn-outline-light answer-button" role="button" id="button-' + i + '" data-name="' + questionsList[game.currentQuestion].answers[i] + '">' + questionsList[game.currentQuestion].answers[i] + '</button></div>'
-
-            );
-
-        }
-
-    },
-
-    // HANDLE THE GAME'S TIMER
-
-    countdown: function() {
-
-        game.clock--;
-        $('#clock').html(game.clock);
-
-        if (game.clock <= 0) {
-
-            game.timeUp();
-
-        }
-    },
-
-    // AFTER USER SELECTS AN ANSWER, CHECK TO SEE IF THE ANSWER IS CORRECT OR NOT, (e) REPRESENTS WHAT THE ANSWER THE USER SELECTED
-
-    clicked: function(e) {
-
-        if ($(e.target).data('name') == questionsList[game.currentQuestion].correctAnswer) {
-
-            game.answeredCorrectly();
-
-        } else {
-
-            game.answeredIncorrectly();
-
-        }
-
-    },
-
-    // IF THE ANSWER WAS CORRECT - INCREASE THEIR CORRECT TOTAL AND LET THEM KNOW THEY WERE CORRECT VIA A MESSAGE
-    // THEN CHECK TO SEE IF THERE ARE ANY MORE QUESTIONS, PAUSE FOR 1.5 SECS, IF NONE THEN SHOW THE USER THE RESULTS OTHERWISE LOAD THE NEXT QUESTION
-
-    answeredCorrectly: function() {
-
-        game.totalCorrectAnswers++;
-        $('body').html('<div class="main-wrapper"><div class="sub-wrapper text-center" id="subwrapper"></div></div>');
-        $('.sub-wrapper').append('<img src="assets/img/correct-face.svg" class="face">').append('<h2 class="result-text">"Correct!"</h2><br>');
-
-        if (game.currentQuestion == questionsList.length - 1) {
-
-            setTimeout(game.results, 1 * 1500);
-
-        } else {
-
-            setTimeout(game.nextQuestion, 1 * 1500)
-
-        }
-
-    },
-
-    // IF THE ANSWER WAS INCORRECT - INCREASE THEIR INCORRECT TOTAL AND LET THEM KNOW THEY WERE INCORRECT AND WHAT THE CORRECT ANSWER WAS VIA A MESSAGE
-    // THEN CHECK TO SEE IF THERE ARE ANY MORE QUESTIONS, PAUSE FOR 1.5 SECS, IF NONE THEN SHOW THE USER THE RESULTS OTHERWISE LOAD THE NEXT QUESTION
-
-    answeredIncorrectly: function() {
-
-        game.totalIncorrectAnswers++;
-        $('body').html('<div class="main-wrapper"><div class="sub-wrapper text-center" id="subwrapper"></div></div>');
-        $('.sub-wrapper').append('<img src="assets/img/incorrect-face.svg" class="face">').append('<div class="container"><h2 class="result-text">The correct answer is <span class="black-text"> " ' + questionsList[game.currentQuestion].correctAnswer + ' "</span></h2></div>');
-
-        if (game.currentQuestion == questionsList.length - 1) {
-
-            setTimeout(game.results, 1 * 1500);
-
-        } else {
-
-            setTimeout(game.nextQuestion, 1 * 1500)
-
-        }
-
-    },
-
-    // IF THE USER RUNS OUT OF TIME (DID NOT ANSWER QUESTION) - INCREASE THEIR UNANSWERED TOTAL AND LET THEM KNOW THEY ARE OUT OF TIME AND WHAT THE CORRECT ANSWER WAS
-    // THEN CHECK TO SEE IF THERE ARE ANY MORE QUESTIONS, PAUSE FOR 1.5 SECS, IF NONE THEN SHOW THE USER THE RESULTS OTHERWISE LOAD THE NEXT QUESTION
-
-    timeUp: function() {
-        clearInterval(timer);
-        game.totalUnansweredQuestions++;
-        $('body').html('<div class="main-wrapper"><div class="sub-wrapper text-center" id="subwrapper"></div></div>');
-        $('.sub-wrapper').append('<h1>Out of time!</h1>').append('<h2 class="result-text">The correct answer is " ' + questionsList[game.currentQuestion].correctAnswer + ' "</h2>');
-
-        if (game.currentQuestion == questionsList.length - 1) {
-
-            setTimeout(game.results, 1 * 1500);
-
-        } else {
-
-            setTimeout(game.nextQuestion, 1 * 1500);
-
-        }
-    },
-
-    // LOAD THE NEXT QUESTION, MAKE SURE AND MOVE UP ONE SO THE SAME QUESTION ISN'T ASKED A SECOND TIME
-
-    nextQuestion: function() {
-
-        clearInterval(timer);
-        game.currentQuestion++;
-        game.loadQuestion();
-
-    },
-
-    // AFTER ALL THE QUESTIONS HAVE BEEN ASKED DISPLAY THE RESULTS TO THE USER
-    // THE USER IS ALSO PRESENTED WITH A BUTTON THEY CAN CLICK TO RESTART THE GAME OF THEY CHOOSE
-
-    results: function() {
-
-        clearInterval(timer);
-
-        $('body').html('<div class="main-wrapper"><div class="sub-wrapper text-center" id="subwrapper"></div></div>');
-
-        $('.sub-wrapper').append('<img src="assets/img/correct-face.svg" class="face">').append('<h2 class="ending">"All Done!"</h2>')
-            .append('<br><h4>Correct: ' + game.totalCorrectAnswers + '</h4>').append('<h4>Incorrect: ' + game.totalIncorrectAnswers + '</h4>').append('<h4>Unanswered: ' + game.totalUnansweredQuestions + '</h4>').append('<a class="btn btn-outline-light reset-button" role="button" id="reset"><img src="assets/img/arrow-reload.svg" class="icons"></a>');
-    },
-
-    // RESET THE GAME FROM SCRATCH AND START LOADING THE QUESTIONS ALL OVER AGAIN
-
-    reset: function() {
-
-        game.currentQuestion = 0;
-        game.clock = 0;
-        game.totalCorrectAnswers = 0;
-        game.totalIncorrectAnswers = 0;
-        game.totalUnansweredQuestions = 0;
-        game.loadQuestion();
-    }
-
-};
+// List of questions that will be asked
 
 var questionsList = [{
     question: '1. What does the aesthetic-usability effect refer to?',
@@ -249,28 +92,166 @@ var questionsList = [{
     correctAnswer: 'It is devoid of any visual styling and does not reflect well the experience of interacting with the full design'
 }];
 
+ // Game operations
+var game = {
+    questions: questionsList,
+    currentQuestion: 0,
+    seconds: 30,
+    totalCorrectAnswers: 0,
+    totalIncorrectAnswers: 0,
+    totalUnansweredQuestions: 0,
 
-// ONLICK TO START GAME
+    loadQuestion: function() {
+        game.seconds = 30;
+        timer = setInterval(game.countdown, 1000);
+
+        // Add wrapper to which the the timer, questions and answers will be appended to
+
+        $('.content-wrapper').html(
+            '<div class="question-info-wrapper shadow">' +
+            '<h1 class="mb-5 shadow bold-700" id="timer"><span id="seconds">30</span></h1>' +
+            '</div>');
+        $('.question-info-wrapper').append(
+            '<h4 class="mb-5 bold-700">' + questionsList[game.currentQuestion].question +
+            '</h4>');
+
+        // For each answer, create a new button
+
+        for (var i = 0; i < questionsList[game.currentQuestion].answers.length; i++) {
+            $('.question-info-wrapper').append(
+               '<div class="button-wrapper">' +
+               '<button role="button" class="btn btn-secondary btn-lg answer-button light-blue-shadow" id="button-' + i + '" data-name="' + questionsList[game.currentQuestion].answers[i] + '">' +
+               questionsList[game.currentQuestion].answers[i] +
+               '</button>' +
+               '</div>')
+        }
+    },
+
+    countdown: function() {
+        game.seconds --;
+        $('#seconds').html(game.seconds);
+
+        if (game.seconds <= 0) {
+            game.timeUp();
+        }
+    },
+
+    // Check to see if answer correct or not and cal the appropriate function
+
+    clicked: function(e) {
+
+        if ($(e.target).data('name') == questionsList[game.currentQuestion].correctAnswer) {
+            game.answeredCorrectly();
+
+        } else {
+            game.answeredIncorrectly();
+        }
+    },
+
+    // If correct, increase correct total and alert them, pause for a few so user can view message then load the next question
+
+    answeredCorrectly: function() {
+        game.totalCorrectAnswers++;
+        $('.button-wrapper').empty();
+        $('.question-info-wrapper').append(
+            '<div class="text-center">' +
+            '<img src="assets/img/correct.svg" class="mt-5 mb-5">' +
+            '</div>'
+        );
+        if (game.currentQuestion == questionsList.length - 1) {
+            setTimeout(game.results, 1 * 1500);
+        } else {
+            setTimeout(game.nextQuestion, 1 * 1500)
+        }
+    },
+
+    // If in-correct, increase in-correct total and alert them, pause for a few so user can view message then load the next question
+
+    answeredIncorrectly: function() {
+        game.totalIncorrectAnswers++;
+        $('.button-wrapper').empty();
+        $('.question-info-wrapper').append(
+            '<div class="text-center">' +
+            '<img src="assets/img/incorrect.svg" class="mt-5 mb-5">' +
+            '<h6 class="result-text mt-5 bold-700">Not Exactly...The answer was ' + questionsList[game.currentQuestion].correctAnswer + '</h6>' +
+            '</div>'
+        );
+        if (game.currentQuestion == questionsList.length - 1) {
+            setTimeout(game.results, 1 * 1500);
+        } else {
+            setTimeout(game.nextQuestion, 1 * 1500)
+        }
+    },
+
+    // If time runs out, increase unanswered total and alert them, pause for a few so user can view message then load the next question
+
+    timeUp: function() {
+        clearInterval(timer);
+        game.totalUnansweredQuestions++;
+        $('.button-wrapper').empty();
+        $('.question-info-wrapper').append(
+            '<div class="text-center">' +
+            '<img src="assets/img/incorrect.svg" class="">' +
+            '<h6 class="result-text mt-5 bold-700">Ran out of time there I see. The answer was ' + questionsList[game.currentQuestion].correctAnswer + '</h6>' +
+            '</div>'
+        );
+        if (game.currentQuestion == questionsList.length - 1) {
+            setTimeout(game.results, 1 * 1500);
+        } else {
+            setTimeout(game.nextQuestion, 1 * 1500)
+        }
+    },
+
+    // Load the next question
+
+    nextQuestion: function() {
+        clearInterval(timer);
+        game.currentQuestion++;
+        game.loadQuestion();
+    },
+
+    // After all question answered or time runs out, display the results to the user along with the option to restart
+
+    results: function() {
+        clearInterval(timer);
+        $('.question-info-wrapper').empty();
+        $('.question-info-wrapper').append(
+            '<div class="text-center">' +
+            '<img src="assets/img/score.svg" class="mb-5">' +
+            '<h4 class="stats-text bold-700">Correct: ' + game.totalCorrectAnswers + '</h4>' +
+            '<h4 class="stats-text bold-700">Incorrect: ' + game.totalIncorrectAnswers + '</h4>' +
+            '<h4 class="stats-text bold-700">Unanswered: ' + game.totalUnansweredQuestions + '</h4>' +
+            '<button type="button" class="btn btn-primary btn-lg shadow cta-button bold-700 mt-4" id="reset-button">START OVER</button>' +
+            '</div>'
+        );
+    },
+
+    // Restart the quiz
+
+    reset: function() {
+        game.currentQuestion = 0;
+        game.seconds = 0;
+        game.totalCorrectAnswers = 0;
+        game.totalIncorrectAnswers = 0;
+        game.totalUnansweredQuestions = 0;
+        game.loadQuestion();
+    }
+};
+
+// Start game
+
 $('#start').on('click', function() {
-
     $('#start').remove();
     game.loadQuestion();
-
 });
 
-// ONCLICK TO RESET GAME
-
-$(document).on('click', '#reset', function() {
-
-    game.reset();
-
-});
-
-// THIS IS THE BUTTON THE USER CLICKS TO SELECT AN ANSWER. THE VALUE OF THE BUTTON IS PASSED THROUGH (e).
-// CLICKING THIS BUTTON INITIATES THE CHECK TO SEE IF THE USER ANSWER WAS CORRECT OR NOT
-
+// Answer user selects
 $(document).on('click', '.answer-button', function(e) {
-
     game.clicked(e);
+});
 
+// Restart game
+
+$(document).on('click', '#reset-button', function() {
+    game.reset();
 });
