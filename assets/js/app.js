@@ -120,7 +120,7 @@ var game = {
         for (var i = 0; i < questionsList[game.currentQuestion].answers.length; i++) {
             $('.question-info-wrapper').append(
                '<div class="button-wrapper">' +
-               '<button role="button" class="btn btn-secondary btn-lg answer-button light-blue-shadow" id="button-' + i + '" data-name="' + questionsList[game.currentQuestion].answers[i] + '">' +
+               '<button role="button" class="btn btn-secondary btn-lg answer-button light-blue-shadow hvr-wobble-horizontal" id="button-' + i + '" data-name="' + questionsList[game.currentQuestion].answers[i] + '">' +
                questionsList[game.currentQuestion].answers[i] +
                '</button>' +
                '</div>')
