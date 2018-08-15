@@ -120,7 +120,7 @@ var game = {
         for (var i = 0; i < questionsList[game.currentQuestion].answers.length; i++) {
             $('.question-info-wrapper').append(
                '<div class="button-wrapper">' +
-               '<button role="button" class="btn btn-secondary btn-lg answer-button light-blue-shadow hvr-wobble-horizontal" id="button-' + i + '" data-name="' + questionsList[game.currentQuestion].answers[i] + '">' +
+               '<button role="button" class="btn btn-secondary btn-lg answer-button light-blue-shadow" id="button-' + i + '" data-name="' + questionsList[game.currentQuestion].answers[i] + '">' +
                questionsList[game.currentQuestion].answers[i] +
                '</button>' +
                '</div>')
@@ -221,7 +221,7 @@ var game = {
             '<h4 class="stats-text bold-700">Correct: ' + game.totalCorrectAnswers + '</h4>' +
             '<h4 class="stats-text bold-700">Incorrect: ' + game.totalIncorrectAnswers + '</h4>' +
             '<h4 class="stats-text bold-700">Unanswered: ' + game.totalUnansweredQuestions + '</h4>' +
-            '<button type="button" class="btn btn-primary btn-lg shadow cta-button bold-700 mt-4" id="reset-button">START OVER</button>' +
+            '<button type="button" class="btn btn-primary btn-lg shadow cta-button bold-700 mt-4 hvr-wobble-horizontal" id="reset-button">START OVER</button>' +
             '</div>'
         );
     },
